@@ -1,0 +1,40 @@
+body {
+    margin: 0 auto;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+
+h1 {
+    color:grey;
+}
+
+img {
+    max-width: 250px;
+}
+
+.footer {
+    margin-top: 10em;
+    background:burlywood;
+    padding: 8px;
+}
+
+input {
+    border: 1px solid #cccccc;
+    padding: 8px;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid #888888;
+    background: #888888;
+    color: white;
+    padding: 8px;
+}
+

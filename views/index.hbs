@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <title>HBS Doc</title>
+    <link rel="icon" href="/images/icon-weather-sunrainheavy-512.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="main-content">
+        {{>header}}
+        <h3>{{name}}</h3>
+
+        <form id="weatherform" action="">
+            <input id="searchtext" type="text" placeholder="Location">
+            <button>Search</button>
+        </form>
+
+        <p id="message-one"></p>
+        <p id="message-two"></p>
+
+    </div>
+    {{>footer}}
+
+    <script src="js/app.js"></script>
+</body>
+</html>
