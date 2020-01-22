@@ -7,6 +7,7 @@ const forecast = require('./utils/forecast')
 
 const app = express()  // generating the app.
 const port = process.env.PORT | 3000 // port for heroku, or if not exists, 3000
+console.log ("binding to port " + port)
 
 
 // customize the server
@@ -108,6 +109,6 @@ app.get('*', (req, res) => {
 
 
 app.listen(port, () => {
-    console.log('Server is up on port ' + port)
+    console.log('Program is alive. Server is up on port ' + port)
 }) // felélesztjük.
 
