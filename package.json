@@ -4,7 +4,7 @@
   "description": "Just an example",
   "main": "index.js",
   "scripts": {
-    "start":"node src/app.js"
+    "start":"node app-err.js"
   },
   "author": "",
   "license": "ISC",
