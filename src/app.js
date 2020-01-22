@@ -7,6 +7,7 @@ const forecast = require('./utils/forecast')
 
 const app = express()  // generating the app.
 const port = process.env.PORT | 3000 // port for heroku, or if not exists, 3000
+app.set('port', port)  // maybe this helps
 console.log ("binding to port " + port)
 
 
