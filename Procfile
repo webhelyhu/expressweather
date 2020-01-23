@@ -1,1 +1,1 @@
-web: node app-err.js
+web: node src/app.js
