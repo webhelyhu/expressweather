@@ -15,26 +15,16 @@ express()
 .set('view engine', 'hbs')
 .set('views', path.join(__dirname, '../views'))
 .get('', (req, res) => { res.render('index', {title: 'Weather App', name:'George'})})
-.listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
-
-/*
-
-//  .get('/', (req, res) => res.send({ info:'The test application is alive!' }))
-
-
-
-const port = process.env.PORT | 3000 // port for heroku, or if not exists, 3000
-
-
-express()
-.set('port', port)  // maybe this helps
-.use(express.static(path.join(__dirname, '../public')))
 .get('/about', (req, res) => {
     res.render('about', {
         title: 'About',
         name:'George'
     })
 }) 
+.listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
+
+/*
+
 .get('/help', (req, res) => {
     res.render('help', {
         helpMessage: 'That is all the help I can give.',
