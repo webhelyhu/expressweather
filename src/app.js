@@ -5,7 +5,6 @@ const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
-
 const PORT = process.env.PORT || 5000
 console.log ("binding to port " + PORT)
 hbs.registerPartials(path.join(__dirname, '../partials'))
@@ -14,11 +13,11 @@ express()
 .use(express.static(path.join(__dirname, '../public')))
 .set('view engine', 'hbs')
 .set('views', path.join(__dirname, '../views'))
-.get('', (req, res) => { res.render('index', {title: 'Weather App', name:'George'})})
+.get('', (req, res) => { res.render('index', {title: 'Weather App', name:'Szy György'})})
 .get('/about', (req, res) => {
     res.render('about', {
         title: 'About',
-        name:'George'
+        name:'Szy György'
     })
 }) 
 .get('/products', (req, res) => {
@@ -33,30 +32,12 @@ express()
     })
 })
 .get('/weather', (req, res) => {
-    if (!req.query.address) {
-        return res.send({
-            error:'You must provide an address'
-        })
-    }
-
-    // console.log('calling geocode')
+    if (!req.query.address) return res.send({error:'You must provide an address to fetch weather forecast'})
     geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
-        if (error) {
-            return res.send({
-                error:'geocode returned an error'
-            })
-        }
-        
-        // console.log('calling forecast')
+        if (error) return res.send({error:'geocode can not locate address'})
         forecast(latitude, longitude, (error, forecastData) => {
-            if (error) {
-                return res.send({
-                    error:'forecast returned an error'
-                })
-            }
+            if (error) return res.send({error:'forecast returned an error'})
 
-            // success with receiving data. sending back to user
-            // console.log('data received. Sending answer')
             res.send({
                 location: location,
                 forecast: forecastData,
@@ -82,11 +63,3 @@ express()
     })
 })
 .listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
-
-/*
-
-.listen(port, () => {
-    console.log('Program is alive. Server is up on port ' + port)
-})
-
-*/
