@@ -37,6 +37,17 @@ express()
         error:'My generic 404 page'
     })
 })
+.get('/products', (req, res) => {
+    if (!req.query.search) {
+        return res.send({
+            error:'You must provide a search term'  // return, so no "else" is needed
+        })
+    }
+
+    res.send({
+        products: []
+    })
+})
 .listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
 
 /*
@@ -73,17 +84,6 @@ express()
             })
         }) // end of forecast callback
     }) //end of geocode callback
-})
-.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({
-            error:'You must provide a search term'  // return, so no "else" is needed
-        })
-    }
-
-    res.send({
-        products: []
-    })
 })
 .listen(port, () => {
     console.log('Program is alive. Server is up on port ' + port)
