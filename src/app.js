@@ -7,7 +7,7 @@ const hbs = require('hbs')
 
 
 const PORT = process.env.PORT || 5000
-console.log ("binding to port " + port)
+console.log ("binding to port " + PORT)
 hbs.registerPartials(path.join(__dirname, '../partials'))
 
 express()
