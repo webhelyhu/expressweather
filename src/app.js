@@ -2,36 +2,33 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 
+// const geocode = require('./utils/geocode')
+// const forecast = require('./utils/forecast')
+
+
 const PORT = process.env.PORT || 5000
+console.log ("binding to port " + port)
 hbs.registerPartials(path.join(__dirname, '../partials'))
 
 express()
 .use(express.static(path.join(__dirname, '../public')))
 .set('view engine', 'hbs')
 .set('views', path.join(__dirname, '../views'))
-.get('/', (req, res) => res.send({ info:'The test application is alive!' }))
-  .listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
+.get('', (req, res) => { res.render('index', {title: 'Weather App', name:'George'})})
+.listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
 
 /*
 
+//  .get('/', (req, res) => res.send({ info:'The test application is alive!' }))
 
 
-const geocode = require('./utils/geocode')
-const forecast = require('./utils/forecast')
 
 const port = process.env.PORT | 3000 // port for heroku, or if not exists, 3000
-console.log ("binding to port " + port)
 
 
 express()
 .set('port', port)  // maybe this helps
 .use(express.static(path.join(__dirname, '../public')))
-.get('', (req, res) => {
-    res.render('index', {
-        title: 'Weather App',
-        name:'George'
-    })
-})
 .get('/about', (req, res) => {
     res.render('about', {
         title: 'About',
