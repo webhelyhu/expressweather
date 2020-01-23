@@ -13,7 +13,7 @@ express()
 .use(express.static(path.join(__dirname, '../public')))
 .set('view engine', 'hbs')
 .set('views', path.join(__dirname, '../views'))
-.get('', (req, res) => { res.render('index', {title: 'Weather App', name:'Szy György'})})
+.get('', (req, res) => { res.render('index', {title: 'Weather App', name:'Type in a location to fetch weather info.'})})
 .get('/about', (req, res) => {
     res.render('about', {
         title: 'About',
