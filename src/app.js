@@ -21,22 +21,6 @@ express()
         name:'George'
     })
 }) 
-.get('/help', (req, res) => {
-    res.render('help', {
-        helpMessage: 'That is all the help I can give.',
-        title: 'This is the help page.'
-    })
-})
-.get('/help/*', (req, res) => {
-    res.render('404', {
-        error:'There is no help with that.. :('
-    })
-})
-.get('*', (req, res) => {
-    res.render('404', {
-        error:'My generic 404 page'
-    })
-})
 .get('/products', (req, res) => {
     if (!req.query.search) {
         return res.send({
@@ -48,10 +32,6 @@ express()
         products: []
     })
 })
-.listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
-
-/*
-
 .get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
@@ -85,6 +65,26 @@ express()
         }) // end of forecast callback
     }) //end of geocode callback
 })
+.get('/help', (req, res) => {
+    res.render('help', {
+        helpMessage: 'That is all the help I can give.',
+        title: 'This is the help page.'
+    })
+})
+.get('/help/*', (req, res) => {
+    res.render('404', {
+        error:'There is no help with that.. :('
+    })
+})
+.get('*', (req, res) => {
+    res.render('404', {
+        error:'My generic 404 page'
+    })
+})
+.listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
+
+/*
+
 .listen(port, () => {
     console.log('Program is alive. Server is up on port ' + port)
 })
