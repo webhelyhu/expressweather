@@ -1,3 +1,17 @@
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
+
+express()
+  .use(express.static(path.join(__dirname, '../public')))
+  .get('/', (req, res) => res.send({ info:'The test application is alive!' }))
+  .listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
+
+/*
+
+
+
+
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
@@ -91,3 +105,4 @@ express()
     console.log('Program is alive. Server is up on port ' + port)
 })
 
+*/
