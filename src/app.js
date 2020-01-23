@@ -21,16 +21,26 @@ express()
         name:'George'
     })
 }) 
-.listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
-
-/*
-
 .get('/help', (req, res) => {
     res.render('help', {
         helpMessage: 'That is all the help I can give.',
         title: 'This is the help page.'
     })
 })
+.get('/help/*', (req, res) => {
+    res.render('404', {
+        error:'There is no help with that.. :('
+    })
+})
+.get('*', (req, res) => {
+    res.render('404', {
+        error:'My generic 404 page'
+    })
+})
+.listen(PORT, () => console.log(`Program is running. Listening on ${ PORT }`))
+
+/*
+
 .get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
@@ -73,16 +83,6 @@ express()
 
     res.send({
         products: []
-    })
-})
-.get('/help/*', (req, res) => {
-    res.render('404', {
-        error:'There is no help with that.. :('
-    })
-})
-.get('*', (req, res) => {
-    res.render('404', {
-        error:'My generic 404 page'
     })
 })
 .listen(port, () => {
